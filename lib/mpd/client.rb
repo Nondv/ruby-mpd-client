@@ -10,6 +10,10 @@ module MPD
       @connection = Connection.new(host: host, port: port)
     end
 
+    def current_song
+      execute('currentsong').to_h
+    end
+
     def status
       response = execute('status')
       response.to_h
