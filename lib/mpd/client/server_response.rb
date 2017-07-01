@@ -26,7 +26,13 @@ module MPD
       end
 
       def key_value_pairs
-        content.split("\n").map { |line| line.split.map(&:strip) }
+        content.split("\n").map do |line|
+          index = line.index(':')
+          raise "can't create key-value pair" unless index
+          key = line[0...index]
+          value = line[(index + 1)..-1].strip
+          [key, value]
+        end
       end
 
       # text without status
