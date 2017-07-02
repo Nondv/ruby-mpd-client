@@ -4,7 +4,9 @@ require 'mpd/client/commands'
 
 module MPD
   class Client
-    attr_reader :connection
+    def self.connect(host: 'localhost', port: 6600)
+      new(host: host, port: port).tap(&:connect)
+    end
 
     def initialize(host: 'localhost', port: 6600)
       @connection = Connection.new(host: host, port: port)
@@ -20,19 +22,26 @@ module MPD
     end
 
     def execute(command)
-      ensure_connection_established
       connection.puts(command)
       response = ServerResponse.from_connection(connection)
       raise(MpdError, response.status) if response.error?
       response
     end
 
+    def connected?
+      execute('ping')
+    rescue => e
+      raise e if e.is_a?(MpdError)
+      false
+    end
+
+    def connect
+      connection.connect
+      raise(ConnectionError) unless connection.gets =~ /^OK/
+    end
+
     private
 
-    def ensure_connection_established
-      return if connection.connected?
-      connection.connect
-      connection.gets
-    end
+    attr_reader :connection
   end
 end

@@ -16,19 +16,13 @@ module MPD
       end
 
       def puts(text)
-        raise ConnectionError unless connected?
+        raise ConnectionError unless socket
         socket.puts(text)
       end
 
       def gets
-        raise ConnectionError unless connected?
+        raise ConnectionError unless socket
         socket.gets
-      end
-
-      def connected?
-        socket && !socket.closed?
-      rescue
-        false
       end
 
       private
