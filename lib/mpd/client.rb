@@ -40,6 +40,10 @@ module MPD
       raise(ConnectionError) unless connection.gets =~ /^OK/
     end
 
+    def disconnect
+      connection.disconnect
+    end
+
     private
 
     attr_reader :connection

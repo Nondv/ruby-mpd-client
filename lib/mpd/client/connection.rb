@@ -12,7 +12,13 @@ module MPD
       end
 
       def connect
+        disconnect if socket
         @socket = TCPSocket.open(host, port)
+      end
+
+      def disconnect
+        socket && socket.close
+        @socket = nil
       end
 
       def puts(text)
