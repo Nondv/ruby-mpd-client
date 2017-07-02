@@ -6,14 +6,14 @@ module MPD
     class ServerResponse < String
       def self.from_connection(conn)
         line = ''
-        buffer = []
+        buffer = ''
         while line != "OK\n" && !line.start_with?('ACK')
           line = conn.gets
           raise(ConnectionError) if line.nil?
           buffer << line
         end
 
-        new(buffer.join)
+        new(buffer.force_encoding('UTF-8'))
       end
 
       def initialize(response_text)
