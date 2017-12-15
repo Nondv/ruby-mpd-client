@@ -7,9 +7,19 @@ module MPD
       module CurrentPlaylist
         # songs - integer or range
         def playlist_info(songs = nil)
-          argument = songs.is_a?(Range) ? "#{songs.begin}:#{songs.end}" : songs
-          response = execute "playlistinfo #{argument}"
+          response = execute "playlistinfo #{resolve_range(songs)}"
           Playlist.from_response(response)
+        end
+
+        # `songs` - integer or range
+        def remove_song_from_queue(songs)
+          execute "delete #{resolve_range(songs)}"
+        end
+
+        private
+
+        def resolve_range(arg)
+          arg.is_a?(Range) ? "#{arg.begin}:#{arg.end}" : arg
         end
       end
     end
