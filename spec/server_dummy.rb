@@ -6,6 +6,10 @@ class ServerDummy
     ServerCommands::Playlistinfo.new(arg, CURRENT_PLAYLIST).execute
   end
 
+  def listall
+    ServerCommands::Listall.new.execute
+  end
+
   CURRENT_PLAYLIST = [{ 'file' => '12 Stones/12 Stones/01 Crash.m4a',
                         'Last-Modified' => '2017-07-02T13:44:51Z',
                         'Artist' => '12 Stones',

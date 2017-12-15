@@ -40,6 +40,7 @@ class ConnectionDummy
     raise MPD::ConnectionError unless connected
     response = case text
                when /^playlistinfo (.*)$/ then server_dummy.playlistinfo($1)
+               when /^listall$/ then server_dummy.listall
                else "OK\n"
                end
     response_lines = response.split("\n")
