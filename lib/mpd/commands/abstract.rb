@@ -1,5 +1,6 @@
 require 'mpd/connection'
 require 'mpd/server_response'
+require 'mpd/playlist'
 
 module MPD
   module Commands
@@ -29,6 +30,17 @@ module MPD
         response = ServerResponse.from_connection(connection)
         raise(MpdError, response.status) if response.error?
         response
+      end
+
+      private
+
+      def resolve_range(arg)
+        if arg.is_a?(Range)
+          last = arg.exclude_end? ? arg.end : arg.end + 1
+          "#{arg.begin}:#{last}"
+        else
+          arg
+        end
       end
     end
   end
