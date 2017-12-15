@@ -23,11 +23,15 @@ module MPD
     def puts(text)
       raise ConnectionError unless socket
       socket.puts(text)
+    rescue Errno::ECONNRESET
+      raise ConnectionError
     end
 
     def gets
       raise ConnectionError unless socket
-      socket.gets
+      socket.gets || raise(ConnectionError)
+    rescue Errno::ECONNRESET
+      raise ConnectionError
     end
 
     private

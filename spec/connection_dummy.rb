@@ -4,12 +4,14 @@ require_relative 'server_dummy'
 # Class for testing commands
 #
 class ConnectionDummy
-  attr_reader :method_invocation_log, :server_response_lines, :server_dummy
+  attr_reader :method_invocation_log, :server_response_lines, :server_dummy,
+              :connected
 
-  def initialize
+  def initialize(connected: true)
     @method_invocation_log = []
     @server_response_lines = []
     @server_dummy = ServerDummy.new
+    @connected = connected
   end
 
   def sent_text
@@ -24,15 +26,18 @@ class ConnectionDummy
 
   def connect
     method_invocation_log << [:connect]
+    @connected = true
   end
 
   def disconnect
     method_invocation_log << [:disconnect]
+    @connected = false
   end
 
   # rubocop:disable Style/PerlBackrefs
   def puts(text)
     method_invocation_log << [:puts, text]
+    raise MPD::ConnectionError unless connected
     response = case text
                when /^playlistinfo (.*)$/ then server_dummy.playlistinfo($1)
                else "OK\n"
@@ -44,6 +49,7 @@ class ConnectionDummy
 
   def gets
     method_invocation_log << [:gets]
+    raise MPD::ConnectionError unless connected
     (server_response_lines.shift || 'ACK') + "\n"
   end
 end
