@@ -1,4 +1,4 @@
-require 'mpd/client/connection'
+require 'mpd/connection'
 require 'mpd/client/server_response'
 require 'mpd/client/commands'
 
