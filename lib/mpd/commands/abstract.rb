@@ -14,7 +14,7 @@ module MPD
       # You can provide you own connection. It should have same
       #
       def initialize(connection: nil, host: 'localhost', port: 6600)
-        @connection = connection || Connection.new(host: host, port: port).tap(&:connect)
+        @connection = connection || Connection.new(host: host, port: port).tap(&:connect).tap(&:gets)
       end
 
       #

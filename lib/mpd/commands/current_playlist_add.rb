@@ -11,8 +11,8 @@ module MPD
       # `songs` is position (as int) or range
       #
       def execute(songs)
-        return exec_command("add #{songs}") unless songs.is_a?(Array)
-        exec_command_list(songs.map { |s| "add #{s}" })
+        return exec_command("add \"#{songs}\"") unless songs.is_a?(Array)
+        exec_command_list(songs.map { |s| "add \"#{s}\"" })
       end
     end
   end
