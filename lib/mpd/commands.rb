@@ -22,6 +22,7 @@ module MPD
     define_trivial_command(:Stop, 'stop')
     define_trivial_command(:Previous, 'previous')
     define_trivial_command(:Next, 'next')
+    define_trivial_command(:CurrentPlaylistClear, 'clear')
 
     #
     # To define commands like "random <1/0>"
