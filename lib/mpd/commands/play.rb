@@ -15,7 +15,7 @@ module MPD
         elsif id
           super("playid #{id}")
         else
-          super('pause 0')
+          super('play')
         end
       end
     end

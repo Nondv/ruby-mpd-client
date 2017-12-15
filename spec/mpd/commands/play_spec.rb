@@ -8,7 +8,7 @@ describe MPD::Commands::Play do
 
   describe 'without args' do
     let(:args) { {} }
-    its('connection.sent_text') { should == "pause 0\n" }
+    its('connection.sent_text') { should == "play\n" }
   end
 
   describe 'with :id and :position set' do
