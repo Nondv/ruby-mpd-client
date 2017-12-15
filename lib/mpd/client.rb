@@ -15,11 +15,6 @@ module MPD
       execute('currentsong').to_h
     end
 
-    def status
-      response = execute('status')
-      response.to_h
-    end
-
     def execute(command)
       connection.puts(command)
       response = ServerResponse.from_connection(connection)
