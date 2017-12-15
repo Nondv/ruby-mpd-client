@@ -11,10 +11,6 @@ module MPD
       @connection = Connection.new(host: host, port: port)
     end
 
-    def current_song
-      execute('currentsong').to_h
-    end
-
     def execute(command)
       connection.puts(command)
       response = ServerResponse.from_connection(connection)
