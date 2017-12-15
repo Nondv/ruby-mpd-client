@@ -38,6 +38,16 @@ module MPD
         response
       end
 
+      def exec_command_list(commands)
+        connection.puts('command_list_begin')
+        commands.each { |c| connection.puts(c) }
+        connection.puts('command_list_end')
+
+        response = ServerResponse.from_connection(connection)
+        raise(MpdError, response.status) if response.error?
+        response
+      end
+
       def resolve_range(arg)
         if arg.is_a?(Range)
           last = arg.exclude_end? ? arg.end : arg.end + 1
