@@ -1,6 +1,5 @@
 require 'mpd/connection'
 require 'mpd/server_response'
-require 'mpd/client/commands'
 
 module MPD
   class Client
