@@ -3,10 +3,6 @@ module MPD
     module Commands
       # https://www.musicpd.org/doc/protocol/playback_commands.html
       module PlaybackControl
-        def pause
-          execute 'pause 1'
-        end
-
         def stop
           execute 'stop'
         end
