@@ -18,12 +18,20 @@ It does not do much
 ```ruby
 require 'ruby-mpd-client'
 
-mpd = MPD::Client.new(host: 'localhost')
-mpd.volume(50)
-mpd.random(true)
-mpd.next
-# and so on
+MPD::Commands::SetVolume.new(host: 'localhost') # :host can be ommited
+                        .execute(75)
+MPD::Commands::Next.new.execute
+
+#
+# to use one connection
+#
+conn = MPD::Connection.new(host: 'localhost', port: 6600)
+conn.connect
+MPD::Commands::Next.new(connection: conn).execute
+MPD::Commands::Pause.new(connection: conn).execute
 ```
+
+For available commands see [lib/mpd/commands](lib/mpd/commands).
 
 ## Contributing
 
