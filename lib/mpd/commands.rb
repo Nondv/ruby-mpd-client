@@ -19,5 +19,6 @@ module MPD
     end
 
     define_trivial_command(:Pause, 'pause 1')
+    define_trivial_command(:Stop, 'stop')
   end
 end
