@@ -26,13 +26,17 @@ module MPD
       #     end
       #
       def execute(command)
+        exec_command(command)
+      end
+
+      private
+
+      def exec_command(command)
         connection.puts(command)
         response = ServerResponse.from_connection(connection)
         raise(MpdError, response.status) if response.error?
         response
       end
-
-      private
 
       def resolve_range(arg)
         if arg.is_a?(Range)
