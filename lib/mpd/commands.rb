@@ -47,7 +47,7 @@ module MPD
     # @!macro [attach] define_trivial_command
     #   @!parse
     #     # Sends "$2" to MPD.
-    #     class Commands::$1; end
+    #     class Commands::$1 < Commands::Abstract; end
     define_trivial_command('Pause', 'pause 1')
     define_trivial_command('Stop', 'stop')
     define_trivial_command('Previous', 'previous')
@@ -57,7 +57,7 @@ module MPD
     # @!macro [attach] define_text_argument_command
     #   @!parse
     #     # Sends '$2 "<ARGUMENT>"' to MPD
-    #     class Commands::$1; end
+    #     class Commands::$1 < Commands::Abstract; end
     define_text_argument_command 'PlaylistDelete', :rm
     define_text_argument_command 'PlaylistSave', :save
     define_text_argument_command 'PlaylistLoad', :load
@@ -66,7 +66,7 @@ module MPD
     # @!macro [attach] define_option_command
     #   @!parse
     #     # Sends '$2 <1/0>' to MPD
-    #     class Commands::$1
+    #     class Commands::$1 < Commands::Abstract
     #       # @param state [Boolean]
     #       def execute(state); end
     #     end
