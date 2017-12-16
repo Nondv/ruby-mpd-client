@@ -1,9 +1,14 @@
 # Ruby MPD client
 
+master: [![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=master)](https://travis-ci.org/Nondv/ruby-mpd-client)
+develop: [![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=develop)](https://travis-ci.org/Nondv/ruby-mpd-client)
+
 Yet another ruby mpd client.
 
 This gem is for my own usage (practicing my programming skills). But
 I would be glad to know if you found it useful.
+
+See on [rubydoc](http://www.rubydoc.info/gems/ruby-mpd-client)
 
 ## Installation
 
@@ -27,6 +32,7 @@ MPD::Commands::Next.new.execute
 #
 conn = MPD::Connection.new(host: 'localhost', port: 6600)
 conn.connect
+conn.gets # first MPD response is always "OK <version>\n"
 MPD::Commands::Next.new(connection: conn).execute
 MPD::Commands::Pause.new(connection: conn).execute
 ```
