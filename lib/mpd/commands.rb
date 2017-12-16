@@ -40,5 +40,22 @@ module MPD
     %w[Consume Crossfade Random Repeat Single].each do |class_name|
       define_option_command(class_name, class_name.downcase)
     end
+
+    #
+    # To define commands like 'save "whatever this is"'
+    #
+    def self.define_text_argument_command(class_name, command)
+      klass = Class.new(::MPD::Commands::Abstract) do
+        define_method :execute do |arg|
+          super("#{command} \"#{arg}\"")
+        end
+      end
+
+      const_set(class_name, klass)
+    end
+
+    define_text_argument_command :PlaylistDelete, :rm
+    define_text_argument_command :PlaylistSave, :save
+    define_text_argument_command :PlaylistLoad, :load
   end
 end
