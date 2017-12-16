@@ -53,6 +53,7 @@ module MPD
     define_text_argument_command :PlaylistDelete, :rm
     define_text_argument_command :PlaylistSave, :save
     define_text_argument_command :PlaylistLoad, :load
+    define_text_argument_command :PlaylistClear, :playlistclear
 
     %w[Consume Crossfade Random Repeat Single].each do |class_name|
       define_option_command(class_name, class_name.downcase)
