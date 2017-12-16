@@ -44,19 +44,36 @@ module MPD
       const_set(class_name, klass)
     end
 
-    define_trivial_command(:Pause, 'pause 1')
-    define_trivial_command(:Stop, 'stop')
-    define_trivial_command(:Previous, 'previous')
-    define_trivial_command(:Next, 'next')
-    define_trivial_command(:CurrentPlaylistClear, 'clear')
+    # @!macro [attach] define_trivial_command
+    #   @!parse
+    #     # Sends "$2" to MPD.
+    #     class Commands::$1; end
+    define_trivial_command('Pause', 'pause 1')
+    define_trivial_command('Stop', 'stop')
+    define_trivial_command('Previous', 'previous')
+    define_trivial_command('Next', 'next')
+    define_trivial_command('CurrentPlaylistClear', 'clear')
 
-    define_text_argument_command :PlaylistDelete, :rm
-    define_text_argument_command :PlaylistSave, :save
-    define_text_argument_command :PlaylistLoad, :load
-    define_text_argument_command :PlaylistClear, :playlistclear
+    # @!macro [attach] define_text_argument_command
+    #   @!parse
+    #     # Sends '$2 "<ARGUMENT>"' to MPD
+    #     class Commands::$1; end
+    define_text_argument_command 'PlaylistDelete', :rm
+    define_text_argument_command 'PlaylistSave', :save
+    define_text_argument_command 'PlaylistLoad', :load
+    define_text_argument_command 'PlaylistClear', :playlistclear
 
-    %w[Consume Crossfade Random Repeat Single].each do |class_name|
-      define_option_command(class_name, class_name.downcase)
-    end
+    # @!macro [attach] define_option_command
+    #   @!parse
+    #     # Sends '$2 <1/0>' to MPD
+    #     class Commands::$1
+    #       # @param state [Boolean]
+    #       def execute(state); end
+    #     end
+    define_option_command 'Consume', 'consume'
+    define_option_command 'Crossfade', 'crossfade'
+    define_option_command 'Random', 'random'
+    define_option_command 'Repeat', 'repeat'
+    define_option_command 'Single', 'single'
   end
 end
