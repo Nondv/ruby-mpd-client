@@ -5,3 +5,7 @@ Metrics/BlockLength:
 Metrics/LineLength:
   Exclude:
     - spec/server_dummy.rb
+
+Naming/FileName:
+  Exclude:
+    - 'lib/ruby-mpd-client.rb'
