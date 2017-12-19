@@ -5,7 +5,7 @@ module MPD
   # Simple wrapper over Socket
   #
   class Connection
-    def initialize(host:, port:)
+    def initialize(host: 'localhost', port: 6600)
       @host = host
       @port = port
     end
