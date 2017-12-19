@@ -1,8 +1,8 @@
 # Ruby MPD client
 
-**master** [![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=master)](https://travis-ci.org/Nondv/ruby-mpd-client)
+[![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=master)](https://travis-ci.org/Nondv/ruby-mpd-client) **master**
 <br />
-**develop** [![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=develop)](https://travis-ci.org/Nondv/ruby-mpd-client)
+[![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=develop)](https://travis-ci.org/Nondv/ruby-mpd-client) **develop**
 
 Yet another ruby mpd client.
 
