@@ -10,7 +10,9 @@ describe MPD::Commands::PlaylistAdd do
 
   describe 'with one song' do
     let(:songs) { 'song1.mp3' }
-    its('connection.sent_text') { should == "playlistadd \"#{name}\" \"song1.mp3\"\n" }
+    its('connection.sent_text') do
+      should == "playlistadd \"#{name}\" \"song1.mp3\"\n"
+    end
   end
 
   describe 'with multiple songs' do

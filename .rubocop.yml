@@ -1,0 +1,7 @@
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*_spec.rb
+
+Metrics/LineLength:
+  Exclude:
+    - spec/server_dummy.rb

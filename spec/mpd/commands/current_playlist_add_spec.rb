@@ -14,7 +14,11 @@ describe MPD::Commands::CurrentPlaylistAdd do
   describe 'with multiple songs' do
     let(:songs) { ['song1.mp3', 'song2.mp3', 'song3.mp3'] }
     its('connection.sent_text') do
-      should == "command_list_begin\nadd \"song1.mp3\"\nadd \"song2.mp3\"\nadd \"song3.mp3\"\ncommand_list_end\n"
+      should == "command_list_begin\n" \
+                "add \"song1.mp3\"\n" \
+                "add \"song2.mp3\"\n" \
+                "add \"song3.mp3\"\n" \
+                "command_list_end\n"
     end
   end
 end
