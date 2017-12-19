@@ -13,7 +13,8 @@ module MPD
       #
       def execute(position: nil, id: nil)
         raise(ArgumentError) if position && id || !position && !id
-        exec_command(id ? "deleteid #{id}" : "delete #{resolve_range(position)}")
+        command = id ? "deleteid #{id}" : "delete #{resolve_range(position)}"
+        exec_command(command)
       end
     end
   end

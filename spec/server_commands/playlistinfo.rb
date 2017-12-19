@@ -11,7 +11,10 @@ module ServerCommands
     def execute
       r = arg_to_range
       return "ACK playlistinfo\n" unless r
-      result = playlist[r].compact.map { |s| s.map { |k, v| "#{k}: #{v}" } }.flatten.join("\n")
+      result = playlist[r].compact
+                          .map { |s| s.map { |k, v| "#{k}: #{v}" } }
+                          .flatten
+                          .join("\n")
       result + "\nOK\n"
     end
 

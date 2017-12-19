@@ -4,18 +4,11 @@ module MPD
   # Array<SongInfo> with some useful methods
   class Playlist < Array
     def self.from_response(response)
-      data = []
-      info = {}
-      response.key_value_pairs.each do |key, value|
-        if info.key?(key) # next song info
-          data << info
-          info = {}
-        end
-
-        info[key] = value
+      data = [{}]
+      response.key_value_pairs.each do |k, v|
+        data.push({}) if data.last.key?(k) # next song reached
+        data.last[k] = v
       end
-
-      data << info
       new(data)
     end
 

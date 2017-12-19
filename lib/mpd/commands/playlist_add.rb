@@ -11,8 +11,12 @@ module MPD
       # @param songs [Array<String>, String] file URIs.
       #
       def execute(name, songs)
-        return exec_command("playlistadd \"#{name}\" \"#{songs}\"") unless songs.is_a?(Array)
-        exec_command_list(songs.map { |s| "playlistadd \"#{name}\" \"#{s}\"" })
+        if songs.is_a?(Array)
+          commands = songs.map { |s| "playlistadd \"#{name}\" \"#{s}\"" }
+          exec_command_list(commands)
+        else
+          exec_command("playlistadd \"#{name}\" \"#{songs}\"")
+        end
       end
     end
   end

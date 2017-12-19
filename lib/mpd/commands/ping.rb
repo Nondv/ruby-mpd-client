@@ -9,11 +9,10 @@ module MPD
     # `false` otherwise
     #
     class Ping < Abstract
-      # rubocop:disable Lint/RescueWithoutErrorClass
       def execute
         super('ping')
         true
-      rescue => e
+      rescue StandardError => e
         raise e if e.is_a?(MpdError)
         false
       end
