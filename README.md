@@ -38,7 +38,8 @@ MPD::Commands::Next.new(connection: conn).execute
 MPD::Commands::Pause.new(connection: conn).execute
 ```
 
-For available commands see [lib/mpd/commands](lib/mpd/commands).
+For available commands see `MPD::Comands` subclasses on
+[rubydoc.info](http://www.rubydoc.info/github/Nondv/ruby-mpd-client/MPD/Commands).
 
 ## Contributing
 
