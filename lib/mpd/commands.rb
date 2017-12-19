@@ -64,6 +64,7 @@ module MPD
     define_trivial_command('Previous', 'previous')
     define_trivial_command('Next', 'next')
     define_trivial_command('CurrentPlaylistClear', 'clear')
+    define_trivial_command('Update', 'update')
 
     define_text_argument_command 'PlaylistDelete', :rm
     define_text_argument_command 'PlaylistSave', :save
