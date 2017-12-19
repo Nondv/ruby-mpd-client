@@ -8,10 +8,14 @@
 
 Yet another ruby mpd client.
 
-This gem is for my own usage (practicing my programming skills). But
-I would be glad to know if you found it useful.
+It does not really provide you some object model for interacting with MPD.
+Mostly it's just collection of MPD commands with different names.
 
-See on [rubydoc](http://www.rubydoc.info/gems/ruby-mpd-client)
+There's `MPD::Connection` wrapper over `Socket`, `MPD::ServerResponse` - string
+with some useful methods, `MPD::Playlist` - verypoor abstraction over song list
+and `MPD::Commands` module that contains all implemented commands.
+
+See on [rubydoc](http://www.rubydoc.info/gems/ruby-mpd-client).
 
 ## Installation
 
@@ -20,8 +24,6 @@ gem 'ruby-mpd-client'
 ```
 
 ## Usage
-
-It does not do much
 
 ```ruby
 require 'ruby-mpd-client'
@@ -45,10 +47,14 @@ For available commands see `MPD::Comands` subclasses on
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/Nondv/ruby-mpd-client.
+I guess your contribution would be a some command implementation or some models
+better than `MPD::Playlist` and `MPD::Song`. Feel free to create pull requests,
+issues or contact me.
 
+[Link to github repo](https://github.com/Nondv/ruby-mpd-client)
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the
+[MIT License](http://opensource.org/licenses/MIT).
 
