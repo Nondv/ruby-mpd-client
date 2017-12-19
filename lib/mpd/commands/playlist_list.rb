@@ -9,7 +9,7 @@ module MPD
       def execute
         exec_command('listplaylists')
           .key_value_pairs
-          .select { |k, v| k == 'playlist' }
+          .select { |k, _v| k == 'playlist' }
           .map(&:last)
       end
     end

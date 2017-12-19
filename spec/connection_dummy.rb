@@ -34,7 +34,7 @@ class ConnectionDummy
     @connected = false
   end
 
-  # rubocop:disable Style/PerlBackrefs
+  # rubocop:disable Style/PerlBackrefs, Metrics/MethodLength, Metrics/AbcSize
   def puts(text)
     method_invocation_log << [:puts, text]
     raise MPD::ConnectionError unless connected
@@ -48,6 +48,7 @@ class ConnectionDummy
     response_lines.pop if response_lines.last == ''
     server_response_lines.concat(response_lines)
   end
+  # rubocop:enable Style/PerlBackrefs, Metrics/MethodLength, Metrics/AbcSize
 
   def gets
     method_invocation_log << [:gets]
