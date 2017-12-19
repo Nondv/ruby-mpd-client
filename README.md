@@ -1,5 +1,7 @@
 # Ruby MPD client
 
+[![Gem Version](https://badge.fury.io/rb/ruby-mpd-client.svg)](https://badge.fury.io/rb/ruby-mpd-client)
+<br />
 [![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=master)](https://travis-ci.org/Nondv/ruby-mpd-client) **master**
 <br />
 [![Build Status](https://travis-ci.org/Nondv/ruby-mpd-client.svg?branch=develop)](https://travis-ci.org/Nondv/ruby-mpd-client) **develop**
