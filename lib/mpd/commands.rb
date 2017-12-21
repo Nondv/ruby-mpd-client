@@ -52,7 +52,7 @@ module MPD
     def self.define_option_command(class_name, command)
       klass = Class.new(::MPD::Commands::Abstract) do
         define_method :execute do |state|
-          super(command + state ? ' 1' : ' 0')
+          exec_command("#{command} #{state ? '1' : '0'}")
         end
       end
 
